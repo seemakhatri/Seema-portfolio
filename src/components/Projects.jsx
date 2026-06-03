@@ -5,8 +5,18 @@ import { useRef } from "react";
 import stockImg from "../assets/project/stock.png";
 import patientImg from "../assets/project/patient.png";
 import animalImg from "../assets/project/animal.png";
+import nozomiImg from "../assets/project/nozomi.svg";
 
 const projects = [
+  {
+    title: "Nozomi AI",
+    desc: "AI-powered search assistant inspired by Perplexity. Built with React, Bun, Node.js, Supabase, PostgreSQL, OpenRouter, DeepSeek, and OAuth authentication.",
+    tags: ["React", "Bun", "Node.js", "Supabase", "PostgreSQL", "OpenRouter"],
+    label: "AI",
+    link: "https://nozomi-ai.vercel.app",
+    live: true,
+    image: nozomiImg,
+  },
   {
     title: "Stock Market Dashboard",
     desc: "Real-time WebSocket stock feeds with sub-500ms latency. Live UK/US prices, dividend tracking, corporate action alerts, and interactive Recharts visualisations with historical overlays.",

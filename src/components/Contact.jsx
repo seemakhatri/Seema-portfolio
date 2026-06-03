@@ -12,7 +12,7 @@ const LINKS = [
   { icon: <EnvelopeSimple size={15} weight="duotone" />, label: 'Email',    href: 'mailto:khatrisonia566@gmail.com' },
   { icon: <LinkedinLogo   size={15} weight="duotone" />, label: 'LinkedIn', href: 'https://www.linkedin.com/in/seema-khatri-514364229/' },
   { icon: <GithubLogo     size={15} weight="duotone" />, label: 'GitHub',   href: 'https://github.com/seemakhatri' },
-  { icon: <FilePdf        size={15} weight="duotone" />, label: 'Resume',   href: 'https://drive.google.com/file/d/1413w3rPTB3ujp22X1RHwe1xe38dmUk_R/view?usp=drive_link' },
+  { icon: <FilePdf        size={15} weight="duotone" />, label: 'Resume',   href: 'https://drive.google.com/file/d/1sI2nrbgUfQngDti1ga92egUyfs0TSN7T/view?usp=drive_link' },
 ]
 
 export default function Contact() {

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-const RESUME_URL = 'https://drive.google.com/file/d/1413w3rPTB3ujp22X1RHwe1xe38dmUk_R/view?usp=drive_link'
+const RESUME_URL = 'https://drive.google.com/file/d/1kmqLlnbMENkNr0Iw_mAXdB7BVKUkgInW/view?usp=drive_link'
 
 const skillGroups = [
   {
