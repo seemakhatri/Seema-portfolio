@@ -422,22 +422,78 @@ export default function Contact() {
           )}
         </motion.div>
 
-        {/* ─── Footer ─── */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.6, duration: 0.6 }}
+        {/* ─── HIGHLIGHTED FOOTER ─── */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.8, duration: 0.6 }}
           style={{
-            fontFamily: "'DM Sans', sans-serif",
-            color: 'rgba(168,216,234,0.15)',
-            fontSize: '0.7rem', 
+            marginTop: '5rem',
             textAlign: 'center',
-            marginTop: '5rem', 
-            letterSpacing: '0.08em',
+            padding: '1.2rem 2rem',
+            position: 'relative',
           }}
         >
-          Crafted with code &amp; colour by Seema Khatri
-        </motion.p>
+          {/* Decorative line above footer */}
+          <div style={{
+            width: '60px',
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent, rgba(79,163,192,0.2), transparent)',
+            margin: '0 auto 1.2rem auto',
+          }} />
+
+          <p
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: '0.75rem',
+              letterSpacing: '0.08em',
+              margin: 0,
+            }}
+          >
+            <span style={{ color: 'rgba(168,216,234,0.2)' }}>
+              Crafted with 
+            </span>
+            <span style={{ color: 'rgba(168,216,234,0.2)' }}>
+              code &amp; 
+            </span>
+            <span style={{ 
+              color: 'white',
+              fontWeight: 500,
+              background: 'linear-gradient(135deg, #4fa3c0, #2a8fb5)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>
+              colour
+            </span>
+            <span style={{ color: 'rgba(168,216,234,0.15)' }}>
+              {' '}by{' '}
+            </span>
+            <span style={{ 
+              color: 'white',
+              fontWeight: 600,
+              letterSpacing: '0.04em',
+              borderBottom: '1px solid rgba(79,163,192,0.2)',
+              paddingBottom: '1px',
+            }}>
+              Seema Khatri
+            </span>
+          </p>
+
+          {/* Subtle glow behind the text */}
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '300px',
+            height: '60px',
+            background: 'radial-gradient(ellipse, rgba(79,163,192,0.05) 0%, transparent 70%)',
+            borderRadius: '50%',
+            pointerEvents: 'none',
+            zIndex: -1,
+          }} />
+        </motion.div>
       </div>
 
       <style>{`
@@ -458,6 +514,14 @@ export default function Contact() {
             transform: translate(15px, -25px) scale(1.1);
             opacity: 0.3;
           }
+        }
+
+        @keyframes heartBeat {
+          0%, 100% { transform: scale(1); }
+          15% { transform: scale(1.15); }
+          30% { transform: scale(1); }
+          45% { transform: scale(1.1); }
+          60% { transform: scale(1); }
         }
 
         @media (max-width: 500px) {
