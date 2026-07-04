@@ -51,7 +51,7 @@ export default function ArtGallery() {
         overflow: "hidden",
       }}
     >
-      {/* Subtle background glow */}
+      {/* Enhanced background glow */}
       <div
         style={{
           position: "absolute",
@@ -60,6 +60,7 @@ export default function ArtGallery() {
           overflow: "hidden",
         }}
       >
+        {/* Top right glow */}
         <div
           style={{
             position: "absolute",
@@ -68,7 +69,34 @@ export default function ArtGallery() {
             width: "500px",
             height: "500px",
             background:
-              "radial-gradient(circle, rgba(79,163,192,0.04) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(79,163,192,0.05) 0%, transparent 70%)",
+            borderRadius: "50%",
+          }}
+        />
+        {/* Bottom left glow - NEW */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-100px",
+            left: "5%",
+            width: "400px",
+            height: "400px",
+            background:
+              "radial-gradient(circle, rgba(79,163,192,0.03) 0%, transparent 70%)",
+            borderRadius: "50%",
+          }}
+        />
+        {/* Center subtle glow - NEW */}
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "600px",
+            height: "600px",
+            background:
+              "radial-gradient(circle, rgba(79,163,192,0.02) 0%, transparent 70%)",
             borderRadius: "50%",
           }}
         />
@@ -120,7 +148,7 @@ export default function ArtGallery() {
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: "0.9rem",
-              color: "rgba(168,216,234,0.5)",
+              color: "rgba(168,216,234,0.4)",
               marginTop: "0.8rem",
               letterSpacing: "0.02em",
             }}
@@ -146,8 +174,10 @@ export default function ArtGallery() {
             <motion.div
               key={i}
               onClick={() => setSelected(i)}
-              whileHover={{ scale: 0.985 }}
-              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ 
+                scale: 0.985,
+                transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] }
+              }}
               style={{
                 borderRadius: "14px",
                 overflow: "hidden",
@@ -156,7 +186,14 @@ export default function ArtGallery() {
                 gridRow: i === 0 ? "span 2" : "auto",
                 minHeight: i === 0 ? "380px" : "180px",
                 background: "#0a1628",
-                border: "1px solid rgba(79,163,192,0.1)",
+                border: "1px solid rgba(79,163,192,0.08)",
+                transition: "border-color 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "rgba(79,163,192,0.2)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(79,163,192,0.08)";
               }}
             >
               <img
@@ -176,7 +213,7 @@ export default function ArtGallery() {
                   position: "absolute",
                   inset: 0,
                   background:
-                    "linear-gradient(180deg, transparent 45%, rgba(6,15,30,0.8) 100%)",
+                    "linear-gradient(180deg, transparent 45%, rgba(6,15,30,0.85) 100%)",
                   transition: "opacity 0.3s",
                 }}
               />
@@ -206,7 +243,7 @@ export default function ArtGallery() {
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "0.68rem",
-                    color: "rgba(168,216,234,0.6)",
+                    color: "rgba(168,216,234,0.5)",
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
                   }}
@@ -214,7 +251,7 @@ export default function ArtGallery() {
                   {p.medium}
                 </p>
               </div>
-              {/* Expand icon */}
+              {/* Expand icon with hover - IMPROVED */}
               <div
                 style={{
                   position: "absolute",
@@ -222,8 +259,8 @@ export default function ArtGallery() {
                   right: "0.75rem",
                   background: "rgba(6,15,30,0.6)",
                   backdropFilter: "blur(8px)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  color: "white",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  color: "rgba(255,255,255,0.6)",
                   borderRadius: "8px",
                   width: "30px",
                   height: "30px",
@@ -231,6 +268,17 @@ export default function ArtGallery() {
                   alignItems: "center",
                   justifyContent: "center",
                   fontSize: "0.8rem",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(79,163,192,0.2)";
+                  e.currentTarget.style.borderColor = "rgba(79,163,192,0.3)";
+                  e.currentTarget.style.color = "white";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(6,15,30,0.6)";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                  e.currentTarget.style.color = "rgba(255,255,255,0.6)";
                 }}
               >
                 ⤢
@@ -259,6 +307,7 @@ export default function ArtGallery() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              padding: "2rem",
             }}
           >
             {/* Prev */}
@@ -271,10 +320,10 @@ export default function ArtGallery() {
               }}
               style={navBtnStyle}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "rgba(79,163,192,0.25)")
+                (e.currentTarget.style.background = "rgba(79,163,192,0.2)")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "rgba(255,255,255,0.06)")
+                (e.currentTarget.style.background = "rgba(255,255,255,0.04)")
               }
             >
               ‹
@@ -293,6 +342,7 @@ export default function ArtGallery() {
                 flexDirection: "column",
                 alignItems: "center",
                 gap: "1.4rem",
+                maxWidth: "90vw",
               }}
             >
               <div
@@ -301,8 +351,7 @@ export default function ArtGallery() {
                   height: "min(68vh, 500px)",
                   borderRadius: "18px",
                   overflow: "hidden",
-                  boxShadow: "0 40px 100px rgba(0,0,0,0.6)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  boxShadow: "0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)",
                 }}
               >
                 <img
@@ -334,7 +383,7 @@ export default function ArtGallery() {
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "0.75rem",
-                    color: "rgba(168,216,234,0.55)",
+                    color: "rgba(168,216,234,0.45)",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
                     marginTop: "0.3rem",
@@ -344,9 +393,9 @@ export default function ArtGallery() {
                 </p>
               </div>
 
-              {/* Dots */}
+              {/* Dots - IMPROVED */}
               <div
-                style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}
+                style={{ display: "flex", gap: "0.6rem", alignItems: "center" }}
               >
                 {paintings.map((_, i) => (
                   <div
@@ -356,13 +405,23 @@ export default function ArtGallery() {
                       setSelected(i);
                     }}
                     style={{
-                      width: selected === i ? "22px" : "7px",
-                      height: "7px",
-                      borderRadius: "4px",
+                      width: selected === i ? "24px" : "6px",
+                      height: "6px",
+                      borderRadius: "3px",
                       background:
-                        selected === i ? "#4fa3c0" : "rgba(255,255,255,0.2)",
+                        selected === i ? "#4fa3c0" : "rgba(255,255,255,0.15)",
                       cursor: "pointer",
                       transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (selected !== i) {
+                        e.currentTarget.style.background = "rgba(255,255,255,0.3)";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (selected !== i) {
+                        e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+                      }
                     }}
                   />
                 ))}
@@ -377,25 +436,25 @@ export default function ArtGallery() {
               }}
               style={{ ...navBtnStyle, right: "1.5rem", left: "auto" }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "rgba(79,163,192,0.25)")
+                (e.currentTarget.style.background = "rgba(79,163,192,0.2)")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "rgba(255,255,255,0.06)")
+                (e.currentTarget.style.background = "rgba(255,255,255,0.04)")
               }
             >
               ›
             </button>
 
-            {/* Close */}
+            {/* Close - IMPROVED */}
             <button
               onClick={() => setSelected(null)}
               style={{
                 position: "absolute",
                 top: "1.5rem",
                 right: "1.5rem",
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                color: "white",
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                color: "rgba(255,255,255,0.6)",
                 width: "40px",
                 height: "40px",
                 borderRadius: "10px",
@@ -405,14 +464,18 @@ export default function ArtGallery() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                transition: "background 0.2s",
+                transition: "all 0.2s ease",
               }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "rgba(255,255,255,0.12)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "rgba(255,255,255,0.06)")
-              }
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.1)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+                e.currentTarget.style.color = "white";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                e.currentTarget.style.color = "rgba(255,255,255,0.6)";
+              }}
             >
               ✕
             </button>
@@ -423,8 +486,8 @@ export default function ArtGallery() {
                 position: "absolute",
                 bottom: "1.5rem",
                 fontFamily: "'DM Sans', sans-serif",
-                color: "rgba(168,216,234,0.25)",
-                fontSize: "0.72rem",
+                color: "rgba(168,216,234,0.2)",
+                fontSize: "0.7rem",
                 letterSpacing: "0.06em",
               }}
             >
@@ -436,8 +499,16 @@ export default function ArtGallery() {
 
       <style>{`
         @media (max-width: 640px) {
-          .art-grid { grid-template-columns: 1fr 1fr !important; }
-          .art-grid > div:first-child { grid-row: auto !important; min-height: 180px !important; }
+          .art-grid { 
+            grid-template-columns: 1fr 1fr !important; 
+          }
+          .art-grid > div:first-child { 
+            grid-row: auto !important; 
+            min-height: 180px !important; 
+          }
+          .art-grid > div {
+            min-height: 140px !important;
+          }
         }
       `}</style>
     </section>
@@ -447,9 +518,9 @@ export default function ArtGallery() {
 const navBtnStyle = {
   position: "absolute",
   left: "1.5rem",
-  background: "rgba(255,255,255,0.06)",
-  border: "1px solid rgba(255,255,255,0.12)",
-  color: "white",
+  background: "rgba(255,255,255,0.04)",
+  border: "1px solid rgba(255,255,255,0.08)",
+  color: "rgba(255,255,255,0.6)",
   width: "50px",
   height: "50px",
   borderRadius: "50%",
@@ -458,7 +529,7 @@ const navBtnStyle = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  transition: "background 0.2s",
+  transition: "all 0.2s ease",
   zIndex: 10,
   fontFamily: "'DM Sans', sans-serif",
 };

@@ -6,8 +6,22 @@ import stockImg from "../assets/project/stock.png";
 import patientImg from "../assets/project/patient.png";
 import animalImg from "../assets/project/animal.png";
 import nozomiImg from "../assets/project/nozomi.svg";
+import thumbnailImg from "../assets/project/thumbnail.svg";
 
 const projects = [
+  {
+    title: "Thumbnail Roast AI",
+    desc: "AI-powered thumbnail critique tool that analyzes YouTube thumbnails using GPT-4 Vision. Upload any thumbnail and receive actionable feedback on composition, contrast, emotion, and click-through optimization.",
+    tags: ["React", "OpenAI Vision", "TypeScript", "Tailwind", "Vercel"],
+    accent: "#f97316",
+    accentBg: "linear-gradient(135deg, #1a1a2e 0%, #2d1f3d 40%, #4a2040 100%)",
+    label: "AI",
+    link: "https://thumbnail-roast.com/",
+    live: true,
+    image: thumbnailImg,
+    isNew: true,
+  },
+
   {
     title: "Nozomi AI",
     desc: "AI-powered search assistant inspired by Perplexity. Built with React, Bun, Node.js, Supabase, PostgreSQL, OpenRouter, DeepSeek, and OAuth authentication.",
@@ -67,7 +81,7 @@ export default function Projects() {
         overflow: "hidden",
       }}
     >
-      {/* Background decoration */}
+      {/* Background decoration - enhanced */}
       <div
         style={{
           position: "absolute",
@@ -86,6 +100,18 @@ export default function Projects() {
             height: "800px",
             background:
               "radial-gradient(circle, rgba(79,163,192,0.04) 0%, transparent 70%)",
+            borderRadius: "50%",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-150px",
+            right: "-100px",
+            width: "400px",
+            height: "400px",
+            background:
+              "radial-gradient(circle, rgba(79,163,192,0.03) 0%, transparent 70%)",
             borderRadius: "50%",
           }}
         />
@@ -158,7 +184,7 @@ export default function Projects() {
                   display: "grid",
                   gridTemplateColumns: "280px 1fr",
                   background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(79,163,192,0.1)",
+                  border: "1px solid rgba(79,163,192,0.08)",
                   borderRadius: "20px",
                   overflow: "hidden",
                   textDecoration: "none",
@@ -169,13 +195,13 @@ export default function Projects() {
                 className="project-card"
                 onMouseEnter={(e) => {
                   if (!p.live) return;
-                  e.currentTarget.style.borderColor = "rgba(79,163,192,0.3)";
+                  e.currentTarget.style.borderColor = "rgba(79,163,192,0.25)";
                   e.currentTarget.style.transform = "translateY(-4px)";
                   e.currentTarget.style.boxShadow =
                     "0 20px 60px rgba(0,0,0,0.3)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(79,163,192,0.1)";
+                  e.currentTarget.style.borderColor = "rgba(79,163,192,0.08)";
                   e.currentTarget.style.transform = "translateY(0)";
                   e.currentTarget.style.boxShadow = "none";
                 }}
@@ -239,7 +265,7 @@ export default function Projects() {
                     <div
                       style={{
                         fontSize: "2.2rem",
-                        color: "rgba(255,255,255,0.2)",
+                        color: "rgba(255,255,255,0.15)",
                         fontWeight: 800,
                       }}
                     >
@@ -266,28 +292,55 @@ export default function Projects() {
                         marginBottom: "0.8rem",
                       }}
                     >
-                      <h3
+                      <div
                         style={{
-                          fontFamily: "'Playfair Display', serif",
-                          fontSize: "1.35rem",
-                          color: "white",
-                          fontWeight: 700,
-                          letterSpacing: "-0.02em",
-                          lineHeight: 1.2,
+                          display: "flex",
+                          alignItems: "center",
+                          flexWrap: "wrap",
+                          gap: "0.5rem",
                         }}
                       >
-                        {p.title}
-                      </h3>
+                        <h3
+                          style={{
+                            fontFamily: "'Playfair Display', serif",
+                            fontSize: "1.35rem",
+                            color: "white",
+                            fontWeight: 700,
+                            letterSpacing: "-0.02em",
+                            lineHeight: 1.2,
+                          }}
+                        >
+                          {p.title}
+                        </h3>
+                        {p.isNew && (
+                          <span
+                            style={{
+                              fontFamily: "'DM Sans', sans-serif",
+                              fontSize: "0.55rem",
+                              color: "#f97316",
+                              background: "rgba(249,115,22,0.12)",
+                              border: "1px solid rgba(249,115,22,0.2)",
+                              borderRadius: "4px",
+                              padding: "0.15rem 0.6rem",
+                              letterSpacing: "0.08em",
+                              textTransform: "uppercase",
+                              fontWeight: 600,
+                            }}
+                          >
+                            ✦ New
+                          </span>
+                        )}
+                      </div>
                       {p.live && (
                         <span
                           style={{
                             fontFamily: "'DM Sans', sans-serif",
                             fontSize: "0.65rem",
                             color: "#4ade80",
-                            background: "rgba(74,222,128,0.1)",
-                            border: "1px solid rgba(74,222,128,0.25)",
+                            background: "rgba(74,222,128,0.08)",
+                            border: "1px solid rgba(74,222,128,0.2)",
                             borderRadius: "50px",
-                            padding: "0.2rem 0.65rem",
+                            padding: "0.2rem 0.7rem",
                             letterSpacing: "0.08em",
                             textTransform: "uppercase",
                             fontWeight: 500,
@@ -304,6 +357,7 @@ export default function Projects() {
                               height: "5px",
                               borderRadius: "50%",
                               background: "#4ade80",
+                              animation: "pulse 2s ease-in-out infinite",
                             }}
                           />
                           Live
@@ -314,7 +368,7 @@ export default function Projects() {
                       style={{
                         fontFamily: "'DM Sans', sans-serif",
                         fontSize: "0.88rem",
-                        color: "rgba(168,216,234,0.65)",
+                        color: "rgba(168,216,234,0.6)",
                         lineHeight: 1.75,
                         marginBottom: "1.5rem",
                       }}
@@ -331,13 +385,28 @@ export default function Projects() {
                         style={{
                           fontFamily: "'DM Sans', sans-serif",
                           padding: "0.25rem 0.75rem",
-                          background: "rgba(79,163,192,0.08)",
-                          border: "1px solid rgba(79,163,192,0.18)",
+                          background: "rgba(79,163,192,0.06)",
+                          border: "1px solid rgba(79,163,192,0.1)",
                           borderRadius: "6px",
                           fontSize: "0.7rem",
-                          color: "#7ab3c8",
+                          color: "rgba(168,216,234,0.6)",
                           letterSpacing: "0.04em",
                           fontWeight: 500,
+                          transition: "all 0.2s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background =
+                            "rgba(79,163,192,0.12)";
+                          e.currentTarget.style.borderColor =
+                            "rgba(79,163,192,0.2)";
+                          e.currentTarget.style.color = "rgba(168,216,234,0.9)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background =
+                            "rgba(79,163,192,0.06)";
+                          e.currentTarget.style.borderColor =
+                            "rgba(79,163,192,0.1)";
+                          e.currentTarget.style.color = "rgba(168,216,234,0.6)";
                         }}
                       >
                         {t}
@@ -352,6 +421,11 @@ export default function Projects() {
       </div>
 
       <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(0.8); }
+        }
+
         @media (max-width: 700px) {
           .project-card { grid-template-columns: 1fr !important; }
         }
